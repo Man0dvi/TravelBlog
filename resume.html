@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Resume Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- custom css -->
+        <link rel="stylesheet" href="assets/css/main.css">
+    </head>
+    <body>
+        <nav class = "navbar bg-white">
+            <div class="container">
+                <div class = "navbar-content">
+                    <div class = "brand-and-toggler">
+                        <a href = "index.html" class = "navbar-brand">
+                            <img src = "assets/images/curriculum-vitae.png" alt = "" class = "navbar-brand-icon">
+                            <span class = "navbar-brand-text">Your <span>Bolg.</span>
+                        </a>
+                        <button type = "button" class = "navbar-toggler-btn">
+                            <div class = "bars">
+                                <div class = "bar"></div>
+                                <div class = "bar"></div>
+                                <div class = "bar"></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section id = "about-sc" class = "">
+            <div class = "container">
+                <div class = "about-cnt">
+                    <form action="\profiles" method ="post" class="trip-form" id = "trip-form">
+                        <div class = "trip-form-blk">
+                            <div class = "trip-form-row-title">
+                                <h3>About Section</h3>
+                            </div>
+                            <div class = "trip-form-row trip-form-row-about">
+                                <div class = "cols-3">
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Place Name</label>
+                                        <input name = "placename" type = "text" class = "form-control placename" id = "" onkeyup="generatetrip()" placeholder="e.g. Taj Mahal">
+                                        <span class="form-text"></span>
+                                    </div>
+                                    <input type="submit" value="Add Name">
+                                    
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">City Name <span class = "opt-text">(optional)</span></label>
+                                        <input name = "cityname" type = "text" class = "form-control cityname" id = "" onkeyup="generatetrip()" placeholder="e.g. Agra">
+                                        <span class="form-text"></span>
+                                    </div>
+                                    
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Country Name</label>
+                                        <input name = "countryname" type = "text" class = "form-control countryname" id = "" onkeyup="generatetrip()" placeholder="e.g. India">
+                                        <span class="form-text"></span>
+                                    </div>
+                                </div>
+
+                                <div class="cols-3">
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Title Image</label>
+                                        <input name = "image" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="previewImage()">
+                                    </div>
+                                    <!-- <div class = "form-elem">
+                                        <label for = "" class = "form-label">Designation</label>
+                                        <input name = "designation" type = "text" class = "form-control designation" id = "" onkeyup="generatetrip()" placeholder="e.g. Sr.Accountants">
+                                        <span class="form-text"></span>
+                                        
+                                    </div> -->
+                                    <!-- <div class = "form-elem">
+                                        <label for = "" class = "form-label">Rating+</label>
+                                        <div class="rate">
+                                            <input name = "designation" input type="radio" class = "form-control designation" id="star5" onkeyup="generatetrip()"  name="rate" value="5" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input name = "designation" input type="radio" class = "form-control designation" id="star4" onkeyup="generatetrip()"  name="rate" value="4" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input name = "designation" input type="radio" class = "form-control designation" id="star3" onkeyup="generatetrip()"  name="rate" value="3" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input name = "designation" input type="radio" class = "form-control designation" id="star2" onkeyup="generatetrip()"  name="rate" value="2" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input name = "designation" input type="radio" class = "form-control designation" id="star1" onkeyup="generatetrip()"  name="rate" value="1" />
+                                            <label for="star1" title="text">1 star</label>
+                                            <span class="form-text"></span>
+                                        </div>
+                                     </div> -->
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Budget</label>
+                                        <input name = "Budget" type = "text" class = "form-control Budget" id = "" onkeyup="generatetrip()" placeholder="e.g. Lake Street-23">
+                                        <span class="form-text"></span>
+                                    </div>
+                                </div>
+
+                                <div class = "cols-3">
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Things to do</label>
+                                        <input name = "todo" type = "text" class = "form-control todo" id = "" onkeyup="generatetrip()" placeholder="e.g. Amusement park">
+                                        <span class="form-text"></span>
+                                    </div>
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Transport</label>
+                                        <input name = "transport" type = "text" class = "form-control transport" id = "" onkeyup="generatetrip()" placeholder="e.g. rikshaw,scooter">
+                                        <span class="form-text"></span>
+                                    </div>
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Stay</label>
+                                        <input name = "Stay" type = "text" class = "form-control Stay" id = "" onkeyup="generatetrip()" placeholder="e.g. Hotel Name">
+                                        <span class="form-text"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trip-form-blk">
+                            <div class = "trip-form-row-title">
+                                <h3>My Blog: </h3>
+                            </div>
+
+                            <div class = "row-separator repeater">
+                                <div class = "repeater" data-repeater-list = "group-a">
+                                    <div data-repeater-item>
+                                        <div class = "trip-form-row trip-form-row-Blog">
+                                            <div class = "cols-2">
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Title</label>
+                                                    <input name = "BlogTitle" type = "text" class = "form-control BlogTitle" id = "" onkeyup="generatetrip()" placeholder="e.g. Taj Mahal">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Description</label>
+                                                    <input name = "BlogDescription" type = "text" class = "form-control BlogDescription" id = "" onkeyup="generatetrip()" placeholder="Start writing here..">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+                                            <!-- <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <button type = "button" data-repeater-create value = "Add" class = "repeater-add-btn">+</button> -->
+                            </div>
+                        </div>
+
+                        <!-- <div class="trip-form-blk">
+                            <div class = "trip-form-row-title">
+                                <h3>experience</h3>
+                            </div>
+
+                            <div class = "row-separator repeater">
+                                <div class = "repeater" data-repeater-list = "group-b">
+                                    <div data-repeater-item>
+                                        <div class = "trip-form-row trip-form-row-experience">
+                                            <div class = "cols-3">
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Title</label>
+                                                    <input name = "exp_title" type = "text" class = "form-control exp_title" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Company / Organization</label>
+                                                    <input name = "exp_organization" type = "text" class = "form-control exp_organization" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Location</label>
+                                                    <input name = "exp_location" type = "text" class = "form-control exp_location" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class = "cols-3">
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Start Date</label>
+                                                    <input name = "exp_start_date" type = "date" class = "form-control exp_start_date" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">End Date</label>
+                                                    <input name = "exp_end_date" type = "date" class = "form-control exp_end_date" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Description</label>
+                                                    <input name = "exp_description" type = "text" class = "form-control exp_description" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+
+                                            <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type = "button" data-repeater-create value = "Add" class = "repeater-add-btn">+</button>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="trip-form-blk">
+                            <div class = "trip-form-row-title">
+                                <h3>education</h3>
+                            </div>
+
+                            <div class = "row-separator repeater">
+                                <div class = "repeater" data-repeater-list = "group-c">
+                                    <div data-repeater-item>
+                                        <div class = "trip-form-row trip-form-row-experience">
+                                            <div class = "cols-3">
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">School</label>
+                                                    <input name = "edu_school" type = "text" class = "form-control edu_school" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Degree</label>
+                                                    <input name = "edu_degree" type = "text" class = "form-control edu_degree" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">City</label>
+                                                    <input name = "edu_city" type = "text" class = "form-control edu_city" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class = "cols-3">
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Start Date</label>
+                                                    <input name = "edu_start_date" type = "date" class = "form-control edu_start_date" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">End Date</label>
+                                                    <input name = "edu_graduation_date" type = "date" class = "form-control edu_graduation_date" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Description</label>
+                                                    <input name = "edu_description" type = "text" class = "form-control edu_description" id = "" onkeyup="generatetrip()">
+                                                    <span class="form-text"></span>
+                                                </div>
+                                            </div>
+
+                                            <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type = "button" data-repeater-create value = "Add" class = "repeater-add-btn">+</button>
+                            </div>
+                        </div> -->
+
+                        <div class="trip-form-blk"> 
+                            <div class = "trip-form-row-title">
+                                <h3>More Images</h3>
+                            </div>
+
+                            <div class = "row-separator repeater">
+                                <div class = "repeater" data-repeater-list = "group-d">
+                                    <div data-repeater-item>
+                                        <div class = "trip-form-row trip-form-row-experience">
+                                            <div class = "cols-3">
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Image</label>
+                                                    <input name = "eximg1" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="previewImage1()">
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Image</label>
+                                                    <input name = "eximg2" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="previewImage2()">
+                                                </div>
+                                                <div class = "form-elem">
+                                                    <label for = "" class = "form-label">Image</label>
+                                                    <input name = "eximg3" type = "file" class = "form-control image" id = "" accept = "image/*" onchange="previewImage3()">
+                                                </div>
+                                            </div>
+                                            <!-- <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <button type = "button" data-repeater-create value = "Add" class = "repeater-add-btn">+</button> -->
+                            </div>
+                        </div> 
+
+                        <div class="trip-form-blk">
+                            <div class = "trip-form-row-title">
+                                <h3>Contact Info </h3>
+                            </div>
+
+                            <div class = "row-separator repeater">
+                                <div class = "repeater" data-repeater-list = "group-e">
+                                    <div data-repeater-item>
+                                        <div class = "trip-form-row trip-form-row-contact">
+                                            <div class = "form-elem">
+                                                <label for = "" class = "form-label">Contact</label>
+                                                <input name = "contact" type = "text" class = "form-control contact" id = "" onkeyup="generatetrip()">
+                                                <span class="form-text"></span>
+                                            </div>
+                                            
+                                            <!-- <button data-repeater-delete type = "button" class = "repeater-remove-btn">-</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <button type = "button" data-repeater-create value = "Add" class = "repeater-add-btn">+</button> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id = "preview-sc" class = "print_area">
+            <div class = "container">
+                <div class = "preview-cnt">
+                    <div class = "preview-cnt-l bg-green text-white">
+                        <div class = "preview-blk">
+                            <div class = "preview-image">
+                                <img src = "" alt = "" id = "image_dsp"> 
+                            </div>
+                            <div class = "preview-item preview-item-name">
+                                <span class = "preview-item-val fw-6" id = "fullcityname_dsp"></span>
+                            </div>
+                            <!-- <div class = "preview-item">
+                                <span class = "preview-item-val text-uppercase fw-6 ls-1" id = "designation_dsp"></span>
+                            </div> -->
+                            <!-- <div class="rate">
+                                <input type="radio" id="star5" name="rate" value="5" />
+                                <label for="star5" title="text">5 stars</label>
+                                <input type="radio" id="star4" name="rate" value="4" />
+                                <label for="star4" title="text">4 stars</label>
+                                <input type="radio" id="star3" name="rate" value="3" />
+                                <label for="star3" title="text">3 stars</label>
+                                <input type="radio" id="star2" name="rate" value="2" />
+                                <label for="star2" title="text">2 stars</label>
+                                <input type="radio" id="star1" name="rate" value="1" />
+                                <label for="star1" title="text">1 star</label>
+                              </div> -->
+                        </div>
+
+                        <div class = "preview-blk">
+                            <div class = "preview-blk-title">
+                                <h3>About Trip at glance:</h3>
+                            </div>
+                            <div class = "preview-blk-list">
+                                <div class = "preview-item">
+                                    <span class = "preview-item-val" id = "transport_dsp"></span>
+                                </div>
+                                <div class = "preview-item">
+                                    <span class = "preview-item-val" id = "todo_dsp"></span>
+                                </div>
+                                <div class = "preview-item">
+                                    <span class = "preview-item-val" id = "Budget_dsp"></span>
+                                </div>
+                                <div class = "preview-item">
+                                    <span class = "preview-item-val" id = "Stay_dsp"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = "preview-blk">
+                            <div class = "preview-blk-title">
+                                <h3>Contact</h3>
+                            </div>
+                            <div class = "contact-items preview-blk-list" id = "contact_dsp">
+                                <!-- contact list here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class = "preview-cnt-r bg-white">
+                        <div class = "preview-blk">
+                            <div class = "preview-blk-title">
+                                <h3>My Blog</h3>
+                            </div>
+                            <!-- <div class = "Blogs-items preview-blk-list" id = "Blogs_dsp"></div> -->
+                            <div class = "preview-item">
+                                <span class = "preview-item-val" id = "BlogTitle_dsp"></span>
+                            </div>
+                            <div class = "preview-item">
+                                <span class = "preview-item-val" id = "BlogDescription_dsp"></span>
+                            </div>
+                            
+                        </div>
+
+                        <!-- <div class = "preview-blk">
+                            <div class = "preview-blk-title">
+                                <h3>educations</h3>
+                            </div>
+                            <div class = "educations-items preview-blk-list" id = "educations_dsp"></div>
+                        </div> -->
+
+                        <!-- <div class = "preview-blk">
+                            <div class = "preview-blk-title">
+                                <h3>experiences</h3>
+                            </div>
+                            <div class = "experiences-items preview-blk-list" id = "experiences_dsp"></div>
+                        </div> -->
+
+                        <div class = "preview-blk">
+                            <div class = "preview-blk-title">
+                                <h3>Images:</h3>
+                            </div>
+                            <div class = "preview-image">
+                                <img src = "" alt = "" id = "eximg1_dsp"> 
+                            </div> 
+                            <div class = "preview-image">
+                                <img src = "" alt = "" id = "eximg2_dsp"> 
+                            </div> 
+                            <div class = "preview-image">
+                                <img src = "" alt = "" id = "eximg3_dsp"> 
+                            </div> 
+
+                            <!-- <div class = "imgs-items preview-blk-list" id = "eximg1_dsp"></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class = "print-btn-sc">
+            <div class = "container">
+                <button type = "button" class = "print-btn btn btn-primary" onclick="printtrip()">Print trip</button>
+            </div>
+        </section>
+
+
+        
+
+        <!-- jquery cdn -->
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <!-- jquery repeater cdn -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" integrity="sha512-bZAXvpVfp1+9AUHQzekEZaXclsgSlAeEnMJ6LfFAvjqYUVZfcuVXeQoN5LhD7Uw0Jy4NCY9q3kbdEXbwhZUmUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- custom js -->
+        <script src = "assets/js/script.js"></script>
+        <!-- app js -->
+        <script src="assets/js/app.js"></script>
+    </body>
+</html>

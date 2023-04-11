@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../common/head'); %>
+        <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+       
+    </head>
+    <body>
+        <nav class = "navbar bg-white">
+            <div class="container">
+                <div class = "navbar-content">
+                    <div class = "brand-and-toggler">
+                        <a href = "index.html" class = "navbar-brand">
+                            <!-- <img src = "assets/images/curriculum-vitae.png" alt = "" class = "navbar-brand-icon"> -->
+                            <span class = "navbar-brand-text">Your <span>Blog.</span>
+                        </a>
+                        <button type = "button" class = "navbar-toggler-btn">
+                            <div class = "bars">
+                                <div class = "bar"></div>
+                                <div class = "bar"></div>
+                                <div class = "bar"></div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- <%- include('../common/nav'); %> -->
+        <section id = "about-sc" class = "">
+            <div class = "container">
+                <div class = "about-cnt">
+                  
+                    <form  onsubmit="return f(this);" action="http://localhost:3000/api/profiles" method ="POST" class="trip-form" id = "trip-form">
+                    
+                        <div class = "trip-form-blk">
+                            <div class = "trip-form-row-title">
+                                <h3>About Section</h3>
+                            </div>
+                            <div class = "trip-form-row trip-form-row-about">
+                                <div class = "cols-3">
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Place Name</label>
+                                        <input name ="placename" type ="text"  placeholder="e.g. Taj Mahal"  value="Taj Mahal">
+                                        <!-- <span class="form-text"></span> -->
+                                    </div>
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">City Name </label>
+                                        <input name ="cityname" type ="text" placeholder="e.g. Agra" value="Agra">
+                                        <!-- <span class="form-text"></span> -->
+                                    </div>
+                                    
+                                    <div class = "form-elem">
+                                        <label for = "" class = "form-label">Country Name</label>
+                                        <input name ="countryname" type ="text" placeholder="e.g. India" value="India">
+                                        <!-- <span class="form-text"></span> -->
+                                    </div>
+                                <input type="submit" value="Add Name" id="send">  
+                                </div>
+                               
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </section>
+   
+
+    </body>
+    <script>function f(profileForm) {
+
+         console.log("Running with JS");
+        const data = {};
+     
+        
+     
+        for (let input of profileForm) {
+            console.log(input.name)
+
+          if (input.name && input.value) {
+            data[input.name] = input.value
+          }
+        }
+    // });
+      
+// profileForm.send.value = "Adding profile information. Please wait ...";
+              
+        fetch(profileForm.action, {
+            method: profileForm.method,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(function(res) {
+          if (res.ok) {
+            console.log(res);
+            // profileForm.send.value = "Sent!";
+          } else {
+            console.log("error", res);
+            // profileForm.send.value = "Error, try again";
+          }
+        });
+      
+        console.log("Down here");
+      
+        return false;
+    }
+      </script>
+      
+</html>
