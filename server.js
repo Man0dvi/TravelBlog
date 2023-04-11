@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 7777;
 const bodyParser = require('body-parser')
 const cors = require( 'cors' ) ;
-const profileRoutes = require( './api/routes/profile' ) ;
+const blogsRoutes = require( './api/routes/blogs' ) ;
 
 // database connection
 require( './api/config/database' );
@@ -19,12 +19,24 @@ app.use(bodyParser.json());
 
 // Backend routes
 app.use(express.static(__dirname + '/views'));
-app.use('/api/profiles', profileRoutes) ;
+app.use('/api/blogs', blogsRoutes) ;
 app.set('view engine', 'ejs');
-app.get('/ui/profiles', function(req, res) {
-    res.render('profile/create');
-    // C:/api/views/.ejs
-  });
+app.get('/ui', function(req, res) {
+  res.render('index');
+  // C:/api/views/.ejs
+});
+app.get('/ui/home', function(req, res) {
+  res.render('index');
+  // C:/api/views/.ejs
+});
+app.get('/ui/createBlog', function(req, res) {
+  res.render('createBlog');
+  // C:/api/views/.ejs
+});
+app.get('/ui/blogs', function(req, res) {
+  res.render('blogs');
+  // C:/api/views/.ejs
+});
 // server running status
 
 app.listen(port, ( ) => {console.log(`The app listening at http://localhost : ${port}`)});
