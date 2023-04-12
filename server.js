@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 7777;
 const bodyParser = require('body-parser')
-const cors = require( 'cors' ) ;
+const cors = require('cors') ;
 const blogsRoutes = require( './api/routes/blogs' ) ;
 
 // database connection
@@ -12,7 +12,6 @@ require( './api/config/database' );
 // allowing cross origin request sources
 app.use(cors( )) ;
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}));s
 
 // Frontend routes
 // app.use("ui");
@@ -33,8 +32,8 @@ app.get('/ui/createBlog', function(req, res) {
   res.render('createBlog');
   // C:/api/views/.ejs
 });
-app.get('/ui/blogs', function(req, res) {
-  res.render('blogs');
+app.get('/ui/myBlogs', function(req, res) {
+  res.render('myBlogs');
   // C:/api/views/.ejs
 });
 // server running status

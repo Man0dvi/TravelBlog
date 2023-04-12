@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%- include('common/head'); %>       
+        <%- include('common/head'); %> 
+</head>      
     </head>
     <body>
-        <%- include('common/nav'); %> 
+      <%- include('common/nav'); %> 
+
+      <form onsubmit="return f(this);" action="http://localhost:3000/api/blogs" method="POST" class="trip-form">  
         <div class="container">
             <div class="col-lg-12">
-                <h1 id="buttons">Places</h1>
-              </div>  
-            <%- include('components/create'); %>
-            <div class="col-lg-12">
-                <h1 id="buttons">Summary</h1>
+                <h1 id="buttons">Create a blog</h1>
+            </div> 
+         
+ 
+            <div class="row">
+                <div class="col-md-4">
+                    <%- include('components/create.ejs'); %>
+                </div> 
+                <div class="col-md-8">
+                  <%- include('components/blog.ejs'); %>
+                </div>
             </div>
-            <%- include('components/create'); %>
-        </div>   
+          
+        </div> 
+      </form> 
     </body>
     <script>function f(profileForm) {
         console.log("Running with JS");
@@ -25,9 +35,9 @@
                 data[input.name] = input.value
             }
         }
-    // });
+    
       
-// profileForm.send.value = "Adding profile information. Please wait ...";
+profileForm.send.value = "Adding profile information. Please wait ...";
               
         fetch(profileForm.action, {
             method: profileForm.method,
