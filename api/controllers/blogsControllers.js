@@ -15,9 +15,9 @@ exports.insert = async (req,res) =>{
 }
 
 exports.index = async (req,res) => {
-    console.log(req)
+    console.log(req.query)
     try{
-        const data = await blogs.find({});
+        const data = await blogs.find(req.query || {});
         res.json(data)
     }
     catch(error){

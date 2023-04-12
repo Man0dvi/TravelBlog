@@ -4,11 +4,11 @@ const blogsSchema = new mongoose.Schema({
     placename: String,
     cityname: String,
     countryname: String,
+    category: String,
     // image:{type:String},
     budget: String,
     todo:String,
     transport:String,
-    stay:String,
     description:String,
     blogTitle:String,
     
