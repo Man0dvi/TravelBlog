@@ -11,6 +11,7 @@ const blogsSchema = new mongoose.Schema({
     transport:String,
     description:String,
     blogTitle:String,
+    Date:String,
     
 })
 // blogsSchema.methods.insert = function insert() {

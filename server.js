@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors') ;
 const blogsRoutes = require( './api/routes/blogs' ) ;
 
+
 // database connection
 require( './api/config/database' );
 
