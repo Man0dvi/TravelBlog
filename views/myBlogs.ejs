@@ -6,12 +6,43 @@
     <body>
         <%- include('common/nav'); %> 
         <div class="container">
-            <h1>
-                Blogs
-            </h1>
-            <div>
-                All the blogs will be listed here
+            <div class="row">
+                <div class="d-flex">
+                    <h1 class="my-3 d-flex-start">
+                        My Blogs
+                    </h1>
+                    <div class="form-group d-flex-end">
+                        <select class="form-select" id="myBlogsCategory" onchange="getBlogs('category',this.value)">
+                            <option>Choose a category</option>
+                            <option value="hill">Hill Station</option>
+                            <option value="beach">Beach</option>
+                            <option value="domestic">Domestic</option>
+                            <option value="international">International</option>
+                        </select>
+                      </div>
+                </div>
+            </div>
+            <div id="previews">
             </div>
         </div>
     </body>
 </html>
+<script>
+    getBlogs();
+    async function getBlogs(optionKey, optionValue) {
+        const previewDiv = document.getElementById('previews');
+        let URL = 'http://localhost:3000/api/blogs';
+        if(optionKey && optionValue){
+            URL+='?'+optionKey+'='+optionValue
+        }
+        fetch(URL).then(async function(response) {
+            const jsonData = await response.json();
+            let innerHtml = '';
+            jsonData.forEach(function(element) {
+                const ejsDiv = ejs.renderFile('components/blogPreview',{blogMeta:element});
+                innerHtml+='<div class="col">'+ejsDiv+'</div>'
+            });
+            previewDiv.innerHTML = innerHtml;
+        });
+    }
+</script>
