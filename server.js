@@ -30,7 +30,7 @@ app.get('/ui/home', function(req, res) {
   // C:/api/views/.ejs
 });
 app.get('/ui/createBlog', function(req, res) {
-  res.render('createBlog');
+  res.render('postBlog');
   // C:/api/views/.ejs
 });
 app.get('/ui/myBlogs', function(req, res) {
