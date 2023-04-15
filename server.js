@@ -10,8 +10,8 @@ require( './api/config/database' );
 
 // allowing cross origin request sources
 app.use(cors( )) ;
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 // Frontend routes
 // app.use("ui");
 

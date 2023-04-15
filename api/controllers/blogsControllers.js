@@ -1,10 +1,16 @@
-var {blogs} = require('../models/blogsModel');
-var ObjectId = require('mongoose').Types.ObjectId;
-
+const fs = require('fs');
+const {blogs} = require('../models/blogsModel');
+const path = require('path');
 // const cloudinary = require("cloudinary").v2; 
 exports.insert = async (req,res) =>{
     console.log(req.body)
-    let newblogs = new blogs(JSON.parse(JSON.stringify(req.body)));
+    let data = JSON.parse(JSON.stringify(req.body));
+    console.log(req.file)
+    data.blogTitleImg = {
+        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file)),
+        contentType: 'image/png'
+    }
+    let newblogs = new blogs();
     newblogs.save();
 }
 

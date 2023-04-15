@@ -8,7 +8,10 @@ const blogsSchema = new mongoose.Schema({
     blogDescription: String,
     blogTransport:String,
     blogDate:String,
-    blogTitleImg: Buffer
+    blogTitleImg: {
+        data: Buffer,
+        contentType: String
+    }
 });
 const blogs = mongoose.model('blogs', blogsSchema)
 module.exports = {blogs}
