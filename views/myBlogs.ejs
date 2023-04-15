@@ -60,23 +60,19 @@
                             '<i class="fa-solid fa-jet-fighter-up"></i>';
                 let category = res.category === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
                 let str = `
+                
                 <div class='col-md-3'>
-                    <div class="card border-primary mb-3">
-                        <figure class="card__thumbnail">
-                            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ">
-                            <div class="card__title">
-                                <div>
-                                    ${res.blogTitle}
-                                </div>
-                                <div>
-                                    ₹ ${res.budget}
-                                </div>    
-                                <div>
-                                    ${transport} ${category}
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
+                    <figure class="snip1527 card">
+                    <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" /></div>
+                    <figcaption>
+                        <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
+                        <h3>${res.blogTitle}</h3> ${transport} ${category}
+                        <p>
+                            ₹ ${res.budget}
+                        </p>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
                 </div>`
                 innerHtml+=str;
             });
