@@ -7,11 +7,11 @@
         <%- include('common/nav'); %> 
         <div class="container">
             <div class="row">
-                <div class="d-flex justify-content-between">
-                    <h1 class="my-3">
+                <div class="d-flex justify-content-between my-5">
+                    <h1>
                         My Blogs
                     </h1>
-                    <div class="my-3 form-group">
+                    <div class="form-group">
                         <select class="form-select" id="myBlogsCategory" onchange="getBlogs('category',this.value)">
                             <option value="choose">Choose a category</option>
                             <option value="hill">Hill Station</option>
@@ -22,7 +22,7 @@
                       </div>
                 </div>
             </div>
-            <div id="previews" class="grid">
+            <div id="previews" class="row">
             </div>
         </div>
     </body>
@@ -31,6 +31,12 @@
     getBlogs();
     function getBlogs(optionKey, optionValue) {
         const previewDiv = document.getElementById('previews');
+        previewDiv.innerHTML = `
+        <div class="w-50">
+            <div class="progress  progress-striped active ">
+            <div class="progress-bar progress-bar-striped indeterminate" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>`;
         let URL = 'http://localhost:3000/api/blogs';
         if(optionKey && optionValue!=='choose'){
             URL+='?'+optionKey+'='+optionValue
@@ -39,6 +45,7 @@
             .then(res => res.json())
             .then(function(response) {
             let innerHtml = '';
+            previewDiv.innerHTML = '';
             response.forEach(async function(res) {
                 // const meta = '<'+'%-'+" include('components/blogPreview') %"+'>';
                 // const fn = ejs.compile(meta, {client: true})({
@@ -52,22 +59,25 @@
                             ? '<i class="fa-solid fa-car"></i>' : 
                             '<i class="fa-solid fa-jet-fighter-up"></i>';
                 let category = res.category === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
-                let str = `<div class='col-md-3'><div class="card border-primary mb-3">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div>
-                                        ${res.blogTitle}
-                                    </div>
-                                    <div>
-                                        ₹ ${res.budget}
-                                    </div>
+                let str = `
+                <div class='col-md-3'>
+                    <div class="card border-primary mb-3">
+                        <figure class="card__thumbnail">
+                            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ">
+                            <div class="card__title">
+                                <div>
+                                    ${res.blogTitle}
                                 </div>
-                                <div class="card-body" style="height:250px">
-                                    <div>
-                                        ${transport} ${category}
-                                    </div>
+                                <div>
+                                    ₹ ${res.budget}
+                                </div>    
+                                <div>
+                                    ${transport} ${category}
                                 </div>
                             </div>
-                        </div>`
+                        </figure>
+                    </div>
+                </div>`
                 innerHtml+=str;
             });
             previewDiv.innerHTML = innerHtml;
