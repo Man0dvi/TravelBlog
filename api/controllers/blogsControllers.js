@@ -6,13 +6,6 @@ exports.insert = async (req,res) =>{
     console.log(req.body)
     let newblogs = new blogs(JSON.parse(JSON.stringify(req.body)));
     newblogs.save();
-    // const file = req.files?.image;
-    // cloudinary.uploader.upload(file.tempFilePath, async (err, result) => {
-    //     console.log(result.url);
-    //     console.log(req.body)
-    //     let newBlogs = new Blogs(JSON.parse(JSON.stringify(req.body)));
-    //     newBlogs.save();
-    // })
 }
 
 exports.index = async (req,res) => {
