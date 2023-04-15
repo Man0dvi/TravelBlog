@@ -16,26 +16,26 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleTextarea" class="form-label mt-4">Description</label>
-                        <textarea name="description" class="form-control" id="inputexampleTextarea" rows="3"></textarea>
+                        <textarea name="blogDescription" class="form-control" id="inputexampleTextarea" rows="3"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="place" class="form-label mt-4">Place</label>
-                        <input name="placename" type="text" class="form-control" id="inputplace" aria-describedby="emailHelp"
+                        <input name="blogPlace" type="text" class="form-control" id="inputplace" aria-describedby="emailHelp"
                             placeholder="Enter Place Name">
                     </div>
                     <div class="form-group">
                         <label for="city" class="form-label mt-4">City</label>
-                        <input name="cityname" type="text" class="form-control" id="inputcity" placeholder="Enter City">
+                        <input name="blogCity" type="text" class="form-control" id="inputcity" placeholder="Enter City">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1" class="form-label mt-4">Country Name</label>
-                        <input name="countryname" type="text" class="form-control" id="inputexampleInputPassword1"
+                        <label for="exampleInputPassword1" class="form-label mt-4">Country</label>
+                        <input name="blogCountry" type="text" class="form-control" id="inputexampleInputPassword1"
                             placeholder="Enter Country">
                     </div>
                     <div class="form-group">
                         <label for="budget" class="form-label mt-4">Budget</label>
                         <span class="input-group-text">$</span>
-                        <input type="text" class="form-control" id="inputbudget" aria-label="Amount (to the nearest dollar)">
+                        <input name="blogBudget" type="number" class="form-control" id="inputbudget" aria-label="Amount (to the nearest dollar)">
                         <span class="input-group-text">.00</span>
                     </div>
                     <div class="form-group">
@@ -120,7 +120,7 @@
         console.log("Running with JS");
         for (let input of form) {
             console.log(input.name)
-            if (input.tagName === "INPUT" && input.name && input.value) {
+            if ((input.tagName === "INPUT" || input.tagName === 'TEXTAREA') && input.name && input.value) {
                 const elem = document.getElementById(input.name);
                 elem.innerHTML = input.value;
             }

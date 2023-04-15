@@ -12,8 +12,9 @@
                         My Blogs
                     </h1>
                     <div class="form-group">
+                        Filter By: 
                         <select class="form-select" id="myBlogsCategory" onchange="getBlogs('category',this.value)">
-                            <option value="choose">Choose a category</option>
+                            <option value="choose">Category</option>
                             <option value="hill">Hill Station</option>
                             <option value="beach">Beach</option>
                             <option value="domestic">Domestic</option>
@@ -60,7 +61,6 @@
                             '<i class="fa-solid fa-jet-fighter-up"></i>';
                 let category = res.category === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
                 let str = `
-                
                 <div class='col-md-3'>
                     <figure class="snip1527 card">
                     <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" /></div>
