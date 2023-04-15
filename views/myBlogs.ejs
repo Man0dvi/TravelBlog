@@ -29,18 +29,32 @@
 </html>
 <script>
     getBlogs();
-    async function getBlogs(optionKey, optionValue) {
+    function getBlogs(optionKey, optionValue) {
         const previewDiv = document.getElementById('previews');
         let URL = 'http://localhost:3000/api/blogs';
         if(optionKey && optionValue){
             URL+='?'+optionKey+'='+optionValue
         }
-        fetch(URL).then(async function(response) {
-            const jsonData = await response.json();
+        fetch(URL)
+            .then(res => res.json())
+            .then(function(response) {
             let innerHtml = '';
-            jsonData.forEach(function(element) {
-                const ejsDiv = ejs.renderFile('components/blogPreview',{blogMeta:element});
-                innerHtml+='<div class="col">'+ejsDiv+'</div>'
+            response.forEach(async function(res) {
+                // const meta = '<'+'%-'+" include('components/blogPreview') %"+'>';
+                // const fn = ejs.compile(meta, {client: true})({
+                //     blogMeta: JSON.stringify(res)
+                // });
+                // const t = fn();
+                let str = `<div class="card border-primary mb-3" style="max-width: 20rem;">
+                                <div class="card-header">${res.blogTitle}</div>
+                                <div class="card-body">
+                                <h4 class="card-title">
+                                    ${res.category}
+                                </h4>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>`
+                innerHtml+=str;
             });
             previewDiv.innerHTML = innerHtml;
         });

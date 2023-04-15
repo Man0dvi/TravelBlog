@@ -5,8 +5,6 @@ const port = process.env.PORT || 7777;
 const bodyParser = require('body-parser')
 const cors = require('cors') ;
 const blogsRoutes = require( './api/routes/blogs' ) ;
-
-
 // database connection
 require( './api/config/database' );
 
@@ -34,7 +32,7 @@ app.get('/ui/createBlog', function(req, res) {
   // C:/api/views/.ejs
 });
 app.get('/ui/myBlogs', function(req, res) {
-  res.render('myBlogs');
+  res.render('myBlogs')
   // C:/api/views/.ejs
 });
 // server running status
