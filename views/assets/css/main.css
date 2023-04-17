@@ -1,6 +1,6 @@
 .progress-bar.indeterminate {
     position: relative;
-    animation: progress-indeterminate 0.3s linear infinite;
+    animation: progress-indeterminate 1.0s linear infinite;
 }
 
 @keyframes progress-indeterminate {

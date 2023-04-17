@@ -33,9 +33,9 @@
     function getBlogs(optionKey, optionValue) {
         const previewDiv = document.getElementById('previews');
         previewDiv.innerHTML = `
-        <div class="w-50">
+        <div class="w-50 d-flex justify-content-center">
             <div class="progress  progress-striped active ">
-            <div class="progress-bar progress-bar-striped indeterminate" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped indeterminate" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>`;
         let URL = 'http://localhost:3000/api/blogs';
@@ -48,11 +48,7 @@
             let innerHtml = '';
             previewDiv.innerHTML = '';
             response.forEach(async function(res) {
-                // const meta = '<'+'%-'+" include('components/blogPreview') %"+'>';
-                // const fn = ejs.compile(meta, {client: true})({
-                //     blogMeta: JSON.stringify(res)
-                // });
-                // const t = fn();
+                const base64String = btoa(String.fromCharCode(...new Uint8Array(res.blogTitleImg?.data?.data)));
                 let transport = 
                     res.transport === 'Train' 
                         ? '<i class="fa-solid fa-train-subway"></i>' : 
@@ -63,10 +59,11 @@
                 let str = `
                 <div class='col-md-3'>
                     <figure class="snip1527 card">
-                    <div class="image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/pr-sample23.jpg" alt="pr-sample23" /></div>
+                    <div class="image"><img src="${`data:image/${res.blogTitleImg?.contentType};base64,${base64String}`}" alt="pr-sample23" /></div>
                     <figcaption>
                         <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
-                        <h3>${res.blogTitle}</h3> ${transport} ${category}
+                        <h3>${res.blogTitle}</h3> 
+                        <p>${transport} ${category}</p>
                         <p>
                             ₹ ${res.budget}
                         </p>
