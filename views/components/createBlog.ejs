@@ -72,8 +72,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="category" class="form-label mt-4">Category</label>
-                        <select class="form-select" id="category">
+                        <label for="blogCategory" class="form-label mt-4">Category</label>
+                        <select name="blogCategory" class="form-select" id="inputCategory">
                             <option value="hill">Hill Station</option>
                             <option value="beach">Beach</option>
                             <option value="domestic">Domestic</option>
@@ -81,8 +81,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="category" class="form-label mt-4">Transport</label>
-                        <select class="form-select" id="category">
+                        <label for="blogTransport" class="form-label mt-4">Transport</label>
+                        <select name="blogTransport" class="form-select" id="inputTransport">
                             <option value="bus">Bus</option>
                             <option value="train">Train</option>
                             <option value="flight">Flight</option>
@@ -109,28 +109,25 @@
     function updatePreview(form) {
         try{
             for (let input of form) {
-                if ((input.tagName === "INPUT" || input.tagName === 'TEXTAREA') && input.name && input.value) {
+                if (input.id) {
                     const elem = document.getElementById(input.name);
-                    const value = input.type=='file' ? input.files[0] : input.value;
-                    formData.append(input.name, value);
                     if(input.type==='file'){
                         let fr = new FileReader();
                         fr.onload = function () {
                             elem.src = fr.result;
                         }
-                        fr.readAsDataURL(input.files[0]);
+                        value = input.files[0]
+                        fr.readAsDataURL(value);
                     } else {
+                        value = input.value
                         elem.innerHTML = input.value;                        
                     }
+                    formData.append(input.name, value);
                 }
             }
         } catch(err) {
             console.log(err)
         }
-        for(var pair of formData.entries()) {
-      console.log(pair[0]+', '+pair[1]);
-    }
-        console.log()
         return false;
     }
   </script>

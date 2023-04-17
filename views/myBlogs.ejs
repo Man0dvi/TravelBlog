@@ -13,7 +13,7 @@
                     </h1>
                     <div class="form-group">
                         Filter By: 
-                        <select class="form-select" id="myBlogsCategory" onchange="getBlogs('category',this.value)">
+                        <select class="form-select" id="myBlogsCategory" onchange="getBlogs('blogCategory',this.value)">
                             <option value="choose">Category</option>
                             <option value="hill">Hill Station</option>
                             <option value="beach">Beach</option>
@@ -30,6 +30,10 @@
 </html>
 <script>
     getBlogs();
+    function getMonth(no) {
+        const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+        return months[no-1]; 
+    }
     function getBlogs(optionKey, optionValue) {
         const previewDiv = document.getElementById('previews');
         previewDiv.innerHTML = `
@@ -54,13 +58,14 @@
                         res.blogTransport === 'Car' 
                             ? '<i class="fa-solid fa-car"></i>' : 
                             '<i class="fa-solid fa-jet-fighter-up"></i>';
-                let category = res.blogCategory === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
-                let str = `
+                const category = res.blogCategory === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
+                const date = res.blogDate.split('-');
+                const str = `
                 <div class='col-md-3'>
                     <figure class="snip1527 card">
                     <div class="image"><img src="${`/static/assets/imgs/${res.blogTitleImg}`}"  alt="pr-sample23" /></div>
                     <figcaption>
-                        <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
+                        <div class="date"><span class="day">${date[2]}</span><span class="month">${getMonth(date[1])}</span></div>
                         <h3>${res.blogTitle}</h3> 
                         <p>${transport} ${category}</p>
                         <p>
