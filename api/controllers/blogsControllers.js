@@ -1,14 +1,10 @@
 const fs = require('fs');
 const {blogs} = require('../models/blogsModel');
-const path = require('path');
 // const cloudinary = require("cloudinary").v2; 
 exports.insert = async (req,res) =>{
     let data = JSON.parse(JSON.stringify(req.body));
-    data.blogTitleImg = {
-        data: fs.readFileSync(path.join(__dirname + '/../../uploads/' + req.file.filename)),
-        contentType: 'image/png'
-    }
-    console.log(data)
+    data.blogTitleImg = req.file.filename;
+    console.log(req.file)
     let newblogs = new blogs(data);
     newblogs.save();
 }

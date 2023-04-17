@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 // app.use("ui");
 
 // Backend routes
-app.use(express.static(__dirname + '/views'));
+app.use("/static",express.static(__dirname + '/views'));
 app.use('/api/blogs', blogsRoutes) ;
 app.set('view engine', 'ejs');
 app.get('/ui', function(req, res) {

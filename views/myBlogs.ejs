@@ -48,24 +48,23 @@
             let innerHtml = '';
             previewDiv.innerHTML = '';
             response.forEach(async function(res) {
-                const base64String = btoa(String.fromCharCode(...new Uint8Array(res.blogTitleImg?.data?.data)));
                 let transport = 
-                    res.transport === 'Train' 
+                    res.blogTransport === 'Train' 
                         ? '<i class="fa-solid fa-train-subway"></i>' : 
-                        res.transport === 'Car' 
+                        res.blogTransport === 'Car' 
                             ? '<i class="fa-solid fa-car"></i>' : 
                             '<i class="fa-solid fa-jet-fighter-up"></i>';
-                let category = res.category === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
+                let category = res.blogCategory === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
                 let str = `
                 <div class='col-md-3'>
                     <figure class="snip1527 card">
-                    <div class="image"><img src="${`data:image/${res.blogTitleImg?.contentType};base64,${base64String}`}" alt="pr-sample23" /></div>
+                    <div class="image"><img src="${`/static/assets/imgs/${res.blogTitleImg}`}"/></div>
                     <figcaption>
                         <div class="date"><span class="day">28</span><span class="month">Oct</span></div>
                         <h3>${res.blogTitle}</h3> 
                         <p>${transport} ${category}</p>
                         <p>
-                            ₹ ${res.budget}
+                            ₹ ${res.blogBudget}
                         </p>
                     </figcaption>
                     <a href="#"></a>
