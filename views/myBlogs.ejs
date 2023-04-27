@@ -25,9 +25,12 @@
             </div>
             <div id="previews" class="row">
             </div>
+            <div id="blogPopup" class="popup-position"></div>
         </div>
     </body>
 </html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
 <script>
     getBlogs();
     function getMonth(no) {
@@ -60,24 +63,104 @@
                             '<i class="fa-solid fa-jet-fighter-up"></i>';
                 const category = res.blogCategory === 'hill' ? '<i class="fa-solid fa-mountain"></i>' : '<i class="fa-solid fa-umbrella-beach"></i>' 
                 const date = res.blogDate.split('-');
+                const detail = JSON.stringify(res);
                 const str = `
-                <div class='col-md-3'>
+                <div class='col-md-3' onclick='showBlog(${detail})'>
                     <figure class="snip1527 card">
-                    <div class="image"><img src="${`/static/assets/imgs/${res.blogTitleImg}`}"  alt="pr-sample23" /></div>
-                    <figcaption>
-                        <div class="date"><span class="day">${date[2]}</span><span class="month">${getMonth(date[1])}</span></div>
-                        <h3>${res.blogTitle}</h3> 
-                        <p>${transport} ${category}</p>
-                        <p>
-                            ₹ ${res.blogBudget}
-                        </p>
-                    </figcaption>
-                    <a href="#"></a>
-                </figure>
+                        <div class="image">
+                            <img src="${`/static/assets/imgs/${res.blogTitleImg}`}"  alt="pr-sample23" />
+                        </div>
+                        <figcaption>
+                            <div class="date">
+                                <span class="day">${date[2]}</span>
+                                <span class="month">${getMonth(date[1])}</span>
+                            </div>
+                            <h3>${res.blogTitle}</h3> 
+                            <p>${transport} ${category}</p>
+                            <p>₹ ${res.blogBudget}</p>
+                        </figcaption>
+                    </figure>
                 </div>`
                 innerHtml+=str;
             });
             previewDiv.innerHTML = innerHtml;
         });
+    }
+    function showBlog(details){
+        console.log(details);
+        const blog = document.getElementById('blogPopup');
+        const innerHTML = `
+            <div class="popup-wrapper card border-primary" >
+                    <div class="card-header">
+                        <h5>${details.blogTitle}</h5>
+                        <button type="button" class="close" onclick="closePopup()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <img id="blogTitleImg" style="height:250px;" src="https://plus.unsplash.com/premium_photo-1671659205352-1c9aa30b6dc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Girl in a jacket">
+                                <figure class="text-center" style="margin-right: 50%;">
+                                    <blockquote class="blockquote">
+                                        <p class="mb-0">${details.blogPlace}</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">
+                                        <span>${details.blogCity}</span>, <cite title="Source Title">${details.blogCountry}</cite>
+                                    </figcaption>
+                                </figure> 
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row rows-col-3">
+                                    <div class="col">
+                                        <strong class="card-title">Date</strong>
+                                        <p class="card-text">
+                                            ${details.blogDate}
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <strong class="card-title">Budget</strong>
+                                        <p class="card-text">
+                                            ${details.blogBudget}
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <strong class="card-title">Stay</strong>
+                                        <p class="card-text">
+                                            ${details.blogStay}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <strong class="card-title">Category</strong>
+                                        <p class="card-text">
+                                            ${details.blogCategory}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <strong class="card-title">Transport</strong>
+                                        <p class="card-text">
+                                            ${details.blogTransport}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h5>Summary</h5>
+                            <p class="card-text">
+                                ${details.blogDescription}
+                            </p>
+                        </div>
+                    </div>
+            </div>`
+        blog.innerHTML = innerHTML;
+        const e = document.getElementById('blogPopup');
+        e.style.display = 'block';
+    }
+    function closePopup(){
+        var e = document.getElementById('blogPopup');
+        e.style.display = 'none';
     }
 </script>
